@@ -1,0 +1,21 @@
+HyPer
+Binary from commit e4b05ba29cfe89c7e969915b5180d157b59ecee2
+
+MonetDB
+Installed from source version 11.19.9
+./configure --enable-optimize
+make
+sudo make install
+
+Docker:
+wget -qO- https://get.docker.com/ | sh
+sudo docker run -v /space/tmp:/mnt -t -i ubuntu:14.10 /bin/bash
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get install build-essential libnuma-dev
+
+KVM + QEMU:
+sudo apt-get install qemu-system-x86
+qemu-img create ubuntu.img 30G
+wget http://releases.ubuntu.com/14.10/ubuntu-14.10-server-amd64.iso
+Installation, 28GB guest memory:
+sudo qemu-system-x86_64 -nographic -enable-kvm -hda ubuntu.img -cdrom ubuntu-14.10-server-amd64.iso -boot d -m 28672
+
